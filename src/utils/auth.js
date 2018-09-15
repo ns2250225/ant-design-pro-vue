@@ -7,7 +7,7 @@ export function getToken() {
 }
 
 export function setToken(token) {
-  return Cookies.set(TokenKey, token + '|' + '+0$+1s%(o%3**-c&s$08z&+z7tgc(lbwk)%l+wsh4a1%33@5%y')
+  return Cookies.set(TokenKey, token)
 }
 
 export function removeToken() {

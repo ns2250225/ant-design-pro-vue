@@ -4,6 +4,7 @@ import Layout from '@/components/Layout'
 import Index from '@/views/Index/Index'
 import UserManage from '@/views/Users/UserManage'
 import Login from '@/views/Login/Login'
+import NOT_FOUND from '@/views/Error/404'
 
 Vue.use(Router)
 
@@ -32,12 +33,10 @@ export const constantRouterMap = [
     hidden: true
   },
   {
-    path: '/',
-    name: 'index',
-    redirect: '/index',
+    path: '/404',
+    component: NOT_FOUND,
     hidden: true
-  },
-  { path: '*', redirect: '/404', hidden: true }
+  }
 ]
 
 export default new Router({
@@ -50,7 +49,7 @@ export const asyncRouterMap = [
     path: '/index',
     component: Layout,
     meta: { title: '首页', icon: 'user', roles: ['admin'] },
-    redirect: '/index/index',
+    redirect: '/index/users',
     children: [{
       path: 'index',
       component: Index,
@@ -62,5 +61,6 @@ export const asyncRouterMap = [
       name: 'userManage',
       meta: { title: '用户管理', icon: 'user', roles: ['admin'] }
     }]
-  }
+  },
+  { path: '*', redirect: '/404', hidden: true }
 ]

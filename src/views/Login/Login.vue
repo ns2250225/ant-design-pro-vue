@@ -67,7 +67,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values)
-          this.$store.dispatch('LoginByUsername', values).then(() => { 
+          this.$store.dispatch('Login', values).then(() => { 
               this.$router.push({ path: '/index' })
           }).catch(() => {
               console.log('login fail!')

@@ -18,12 +18,14 @@
             <a-menu theme="dark" mode="inline">
                 <a-menu-item v-for="item in permission_routers" :key="item" v-if="!item.children&&!item.hidden">
                   <a-icon type="pie-chart" />
-                  <span>{{ item.name }}</span>
+                  <router-link :to="{ name: item.name }"><span>{{ item.name }}</span></router-link>
                 </a-menu-item>
 
                 <a-sub-menu v-for="item in permission_routers" :key="item" v-if="item.children&&!item.hidden">
                   <span slot="title"><a-icon type="mail" /><span>{{ item.meta.title }}</span></span>
-                  <a-menu-item v-for="child in item.children" :key="child" v-if="!child.hidden">{{ child.meta.title }}</a-menu-item>
+                  <a-menu-item v-for="child in item.children" :key="child" v-if="!child.hidden">
+                    <router-link :to="{ name: child.name }">{{ child.meta.title }}</router-link>
+                  </a-menu-item>
                 </a-sub-menu>
             </a-menu>           
       </a-layout-sider>
@@ -31,7 +33,7 @@
 
       <a-layout>
         <!-- 顶栏导航 -->
-        <a-layout-header :style="{ background: '#fff', padding: 0 }">
+        <a-layout-header :style="{ background: '#fff', padding: 0, height: '64px' }">
           <div class="header-nav-right">
             <a-dropdown style="display: inline-block; height: 100%; vertical-align: initial" >
               <span style="cursor: pointer">
